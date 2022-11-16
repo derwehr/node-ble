@@ -5,7 +5,7 @@ declare namespace NodeBle {
         getUUID(): Promise<string>;
         getFlags(): Promise<string[]>;
         isNotifying(): Promise<boolean>;
-        readValue(offset?: number): Promise<Buffer>;
+        readValue(offset?: number): Promise<DataView>;
         writeValue(buffer: Buffer, optionsOrOffset?: number | WriteValueOptions): Promise<void>;
         startNotifications(): Promise<void>;
         stopNotifications(): Promise<void>;

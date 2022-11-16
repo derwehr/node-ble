@@ -66,7 +66,7 @@ test('read/write', async () => {
   expect(characteristic.helper.callMethod).toHaveBeenCalledWith('WriteValue', expect.anything(), writeValueOptions(0, 'command'))
 
   characteristic.helper.callMethod.mockResolvedValueOnce([255, 100, 0])
-  await expect(characteristic.readValue()).resolves.toEqual(Buffer.from([255, 100, 0]))
+  await expect(characteristic.readValue()).resolves.toEqual(new DataView(Buffer.from([255, 100, 0]).buffer))
 })
 
 test('notify', async () => {

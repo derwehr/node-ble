@@ -53,7 +53,8 @@ class GattCharacteristic extends EventEmitter {
       offset: buildTypedValue('uint16', offset)
     }
     const payload = await this.helper.callMethod('ReadValue', options)
-    return Buffer.from(payload)
+    const arrayBuffer = new Uint8Array(payload).buffer
+    return new DataView(arrayBuffer)
   }
 
   /**
