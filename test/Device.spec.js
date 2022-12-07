@@ -30,6 +30,7 @@ test('props', async () => {
     Address: '00:00:00:00:00:00',
     AddressType: 'public',
     Alias: '_alias_',
+    ManufacturerData: { 1390: { value: 0x3890 } },
     RSSI: 100,
     TxPower: 50,
 
@@ -41,6 +42,7 @@ test('props', async () => {
   await expect(device.getAddress()).resolves.toEqual('00:00:00:00:00:00')
   await expect(device.getAddressType()).resolves.toEqual('public')
   await expect(device.getAlias()).resolves.toEqual('_alias_')
+  await expect(device.getManufacturerData()).resolves.toEqual({ 1390: { value: 0x3890 } })
   await expect(device.getRSSI()).resolves.toEqual(100)
   await expect(device.getTXPower()).resolves.toEqual(50)
 

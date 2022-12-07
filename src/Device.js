@@ -50,6 +50,14 @@ class Device extends EventEmitter {
   }
 
   /**
+   * The manufacturer data of the remote device.
+   * @returns {string}
+   */
+  async getManufacturerData () {
+    return this.helper.prop('ManufacturerData')
+  }
+
+  /**
    * Received Signal Strength Indicator of the remote device
    * @returns {number}
    */
