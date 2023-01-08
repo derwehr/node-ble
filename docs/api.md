@@ -218,6 +218,7 @@ Device class interacts with a remote device.
     * [.getAddress()](#Device+getAddress) ⇒ <code>string</code>
     * [.getAddressType()](#Device+getAddressType) ⇒ <code>string</code>
     * [.getAlias()](#Device+getAlias) ⇒ <code>string</code>
+    * [.getManufacturerData()](#Device+getManufacturerData) ⇒ <code>string</code>
     * [.getRSSI()](#Device+getRSSI) ⇒ <code>number</code>
     * [.getTXPower()](#Device+getTXPower) ⇒ <code>number</code>
     * [.isPaired()](#Device+isPaired) ⇒ <code>boolean</code>
@@ -253,6 +254,12 @@ The Bluetooth device Address Type (public, random).
 
 ### device.getAlias() ⇒ <code>string</code>
 The name alias for the remote device.
+
+**Kind**: instance method of [<code>Device</code>](#Device)  
+<a name="Device+getManufacturerData"></a>
+
+### device.getManufacturerData() ⇒ <code>string</code>
+The manufacturer data of the remote device.
 
 **Kind**: instance method of [<code>Device</code>](#Device)  
 <a name="Device+getRSSI"></a>
@@ -411,7 +418,7 @@ Write the value of the characteristic without waiting for the response.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>DataView</code> |  | DataView containing the characteristic value. |
+| value | <code>Buffer</code> |  | Buffer containing the characteristic value. |
 | [offset] | <code>number</code> | <code>0</code> | Starting offset. |
 
 <a name="GattCharacteristic+writeValueWithResponse"></a>
@@ -423,7 +430,7 @@ Write the value of the characteristic and wait for the response.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>DataView</code> |  | DataView containing the characteristic value. |
+| value | <code>Buffer</code> |  | Buffer containing the characteristic value. |
 | [offset] | <code>number</code> | <code>0</code> | Starting offset. |
 
 <a name="GattCharacteristic+startNotifications"></a>

@@ -41,8 +41,8 @@ test('read/write', async () => {
   }
 
   await expect(characteristic.writeValue('not_a_buffer')).rejects.toThrow('Only buffers can be wrote')
-  await expect(characteristic.writeValueWithResponse('not_a_dataview')).rejects.toThrow('writeValueWithResponse first argument must be a DataView')
-  await expect(characteristic.writeValueWithoutResponse('not_a_dataview')).rejects.toThrow('writeValueWithoutResponse first argument must be a DataView')
+  await expect(characteristic.writeValueWithResponse('not_a_buffer')).rejects.toThrow('Only buffers can be wrote')
+  await expect(characteristic.writeValueWithoutResponse('not_a_buffer')).rejects.toThrow('Only buffers can be wrote')
 
   await expect(characteristic.writeValue(Buffer.from('hello'), 5)).resolves.toBeUndefined()
   expect(characteristic.helper.callMethod).toHaveBeenCalledWith('WriteValue', expect.anything(), writeValueOptions(5))
@@ -59,12 +59,10 @@ test('read/write', async () => {
   await expect(characteristic.writeValue(Buffer.from('hello'), 'incorrect argument')).resolves.toBeUndefined()
   expect(characteristic.helper.callMethod).toHaveBeenCalledWith('WriteValue', expect.anything(), writeValueOptions())
 
-  const buffer = new ArrayBuffer(4)
-  const view = new DataView(buffer)
-  await expect(characteristic.writeValueWithResponse(view).resolves.toBeUndefined())
+  await expect(characteristic.writeValueWithResponse(Buffer.from('hello'))).resolves.toBeUndefined()
   expect(characteristic.helper.callMethod).toHaveBeenCalledWith('WriteValue', expect.anything(), writeValueOptions(0, 'request'))
 
-  await expect(characteristic.writeValueWithoutResponse(view).resolves.toBeUndefined())
+  await expect(characteristic.writeValueWithoutResponse(Buffer.from('hello'))).resolves.toBeUndefined()
   expect(characteristic.helper.callMethod).toHaveBeenCalledWith('WriteValue', expect.anything(), writeValueOptions(0, 'command'))
 
   characteristic.helper.callMethod.mockResolvedValueOnce([255, 100, 0])
