@@ -83,21 +83,23 @@ class GattCharacteristic extends EventEmitter {
 
   /**
    * Write the value of the characteristic without waiting for the response.
-   * @param {Buffer} value - Buffer containing the characteristic value.
+   * @param {ArrayBuffer} value - Buffer containing the characteristic value.
    * @param {number} [offset = 0] - Starting offset.
    * @returns {Promise}
    */
   async writeValueWithoutResponse (value, offset = 0) {
+    value = Buffer.from(value);
     return this.writeValue(value, { offset, type: 'command' })
   }
 
   /**
    * Write the value of the characteristic and wait for the response.
-   * @param {Buffer} value - Buffer containing the characteristic value.
+   * @param {ArrayBuffer} value - Buffer containing the characteristic value.
    * @param {number} [offset = 0] - Starting offset.
    * @returns {Promise}
    */
   async writeValueWithResponse (value, offset = 0) {
+    value = Buffer.from(value);
     return this.writeValue(value, { offset, type: 'request' })
   }
 
