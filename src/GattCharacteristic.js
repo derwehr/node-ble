@@ -88,7 +88,7 @@ class GattCharacteristic extends EventEmitter {
    * @returns {Promise}
    */
   async writeValueWithoutResponse (value, offset = 0) {
-    value = Buffer.from(value);
+    value = Buffer.from(value)
     return this.writeValue(value, { offset, type: 'command' })
   }
 
@@ -99,7 +99,7 @@ class GattCharacteristic extends EventEmitter {
    * @returns {Promise}
    */
   async writeValueWithResponse (value, offset = 0) {
-    value = Buffer.from(value);
+    value = Buffer.from(value)
     return this.writeValue(value, { offset, type: 'request' })
   }
 
