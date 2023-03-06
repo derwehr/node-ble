@@ -113,7 +113,9 @@ class GattCharacteristic extends EventEmitter {
         const { value } = propertiesChanged.Value
         const arrayBuffer = new Uint8Array(value).buffer
         const event = {
-          target: this,
+          target: {
+            value: new DataView(arrayBuffer),
+          },
           type: 'characteristicvaluechanged',
           value: new DataView(arrayBuffer)
         }
