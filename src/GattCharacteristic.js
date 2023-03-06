@@ -132,6 +132,10 @@ class GattCharacteristic extends EventEmitter {
     this.on(event, listener)
   }
 
+  removeEventListener (event, listener) {
+    // not implemented  
+  }
+
   async stopNotifications () {
     await this.helper.callMethod('StopNotify')
     this.helper.removeAllListeners('PropertiesChanged') // might be improved
