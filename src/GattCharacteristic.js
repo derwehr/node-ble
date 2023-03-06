@@ -111,7 +111,8 @@ class GattCharacteristic extends EventEmitter {
     const cb = (propertiesChanged) => {
       if ('Value' in propertiesChanged) {
         const { value } = propertiesChanged.Value
-        this.emit('characteristicvaluechanged', Buffer.from(value))
+        const arrayBuffer = new Uint8Array(value).buffer
+        this.emit('characteristicvaluechanged', new DataView(arrayBuffer))
       }
     }
 
