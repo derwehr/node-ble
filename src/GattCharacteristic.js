@@ -105,19 +105,23 @@ class GattCharacteristic extends EventEmitter {
 
   /**
    * Starts a notification session from this characteristic.
-   * It emits valuechanged event when receives a notification.
+   * It emits characteristicvaluechanged event when receives a notification.
    */
   async startNotifications () {
     const cb = (propertiesChanged) => {
       if ('Value' in propertiesChanged) {
         const { value } = propertiesChanged.Value
-        this.emit('valuechanged', Buffer.from(value))
+        this.emit('characteristicvaluechanged', Buffer.from(value))
       }
     }
 
     this.helper.on('PropertiesChanged', cb)
 
     await this.helper.callMethod('StartNotify')
+  }
+
+  addEventListener (event, listener) {
+    this.on(event, listener)
   }
 
   async stopNotifications () {
