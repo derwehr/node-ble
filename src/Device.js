@@ -58,6 +58,14 @@ class Device extends EventEmitter {
   }
 
   /**
+   * Advertised transmitted data.
+   * @returns {Object.<string, any>}
+   */
+  async getAdvertisingData () {
+    return this.helper.prop('AdvertisingData')
+  }
+
+  /**
    * Received Signal Strength Indicator of the remote device
    * @returns {number}
    */

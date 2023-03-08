@@ -219,6 +219,7 @@ Device class interacts with a remote device.
     * [.getAddressType()](#Device+getAddressType) ⇒ <code>string</code>
     * [.getAlias()](#Device+getAlias) ⇒ <code>string</code>
     * [.getManufacturerData()](#Device+getManufacturerData) ⇒ <code>string</code>
+    * [.getAdvertisingData()](#Device+getAdvertisingData) ⇒ <code>Object.&lt;string, any&gt;</code>
     * [.getRSSI()](#Device+getRSSI) ⇒ <code>number</code>
     * [.getTXPower()](#Device+getTXPower) ⇒ <code>number</code>
     * [.isPaired()](#Device+isPaired) ⇒ <code>boolean</code>
@@ -260,6 +261,12 @@ The name alias for the remote device.
 
 ### device.getManufacturerData() ⇒ <code>string</code>
 The manufacturer data of the remote device.
+
+**Kind**: instance method of [<code>Device</code>](#Device)  
+<a name="Device+getAdvertisingData"></a>
+
+### device.getAdvertisingData() ⇒ <code>Object.&lt;string, any&gt;</code>
+Advertised transmitted data.
 
 **Kind**: instance method of [<code>Device</code>](#Device)  
 <a name="Device+getRSSI"></a>
